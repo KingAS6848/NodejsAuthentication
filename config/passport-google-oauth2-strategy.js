@@ -3,13 +3,13 @@ const crypto = require('crypto');
 const googleStrategy = require('passport-google-oauth2').Strategy;
 const User = require('../models/user');
 const mongoose = require('mongoose'); // Add this line for ObjectId conversion
-
+require('dotenv').config()
 
 
 
 passport.use(new googleStrategy({
-    clientID: '659492547346-stjbhvdnrtmvokqd397p8oo64thsj2np.apps.googleusercontent.com', // e.g. asdfghjkkadhajsghjk.apps.googleusercontent.com
-    clientSecret: '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', // e.g. _ASDFA%KFJWIASDFASD#FAD-
+    clientID: process.env.GOOGLE_CLIENT_ID, 
+    clientSecret: process.env.GOOGLE_CLIENT_SERVER,
     callbackURL: "http://localhost:8000/users/auth/google/callback",
 },
 

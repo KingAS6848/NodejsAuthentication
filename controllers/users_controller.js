@@ -1,7 +1,8 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const Otp = require('../models/otp');
-const nodemailer =require('nodemailer');
+const nodemailer = require('nodemailer');
+require('dotenv').config()
 
 // Render Sign Up Form
 module.exports.signUp = function (req, res) {
@@ -127,31 +128,39 @@ module.exports.emailsend = async function (req, res) {
     console.log('success', otpResponse);
 
 
-       // Create a Nodemailer transporter using your email configuration
-       let transporter = nodemailer.createTransport({
-        service: "Gmail",
-        port: 465,
-        secure:true,
-        logger:true,
-        debug:true,
-        secureConnection:false,
-        auth: {
-          user: "kingabhi6848@gmail.com", // Replace with your Gmail email
-          pass: "abhi6848", // Replace with your Gmail password or app password
-        },
-        tls:{
-            rejectUnauthorized:true
-        }
-      });
-          // Setup email data
+    // Create a Nodemailer transporter using your email configuration
+    let transporter = nodemailer.createTransport({
+      service: "Gmail",
+      port: 465,
+      secure: true,
+      logger: true,
+      debug: true,
+      secureConnection: false,
+      auth: {
+        user: process.env.EMAIL, // Replace with your Gmail email
+        pass: process.env.PASSWORD, // Replace with your Gmail password or app password
+      },
+      tls: {
+        rejectUnauthorized: true
+      }
+    });
+    // Setup email data
     let mailOptions = {
-        from: "kingabhi6848@gmail.com", // Replace with your Gmail email
-        to: data.email,
-        subject: "Your One-Time Password (OTP)",
-        text: `Your OTP is: ${otpcode}`,
-      };
+      from: process.env.EMAIL, // Replace with your Gmail email
+      to: data.email,
+      subject: "Your One-Time Password (OTP) ",
+      text: `
 
-      await transporter.sendMail(mailOptions);
+        Dear ${data.name}, 
+
+        To reset your password, please use the following OTP:
+
+        OTP: ${otpcode}
+        
+        Please enter this OTP on the reset password page within the next 15 mintues`
+    };
+
+    await transporter.sendMail(mailOptions);
 
     return res.redirect('/users/newpass');
   } else {

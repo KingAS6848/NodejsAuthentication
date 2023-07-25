@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-
+require("dotenv").config()
 // Connect to the MongoDB database at the specified URL
-mongoose.connect('mongodb://127.0.0.1:27017/authApp2');
+mongoose.connect(process.env.DATABASE);
 
 const db = mongoose.connection;
 
