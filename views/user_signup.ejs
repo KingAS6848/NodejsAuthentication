@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/css/user_signup.css">
+<a href="/users/sign-in"><button type="submit"
+    style="height: 30px; padding: 5px; cursor: pointer; border: none; background-color: aquamarine; border-radius: 4px;">Back
+    To Sign In</button></a>
+<div class="signup-container">
+
+  <h1 class="signup-signin-heading">Sign Up</h1>
+  <form class="signup-signin-form" action="/users/create" method="post">
+    <div class="signup-input-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="signup-input-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="signup-input-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <div class="signup-input-group">
+      <label for="confirm_password">Confirm Password:</label>
+      <input type="password" id="confirm_password" name="confirm_password" required>
+    </div>
+    <button type="submit" class="signup-submit-btn">Sign Up</button>
+  </form>
+  <div class="signup-google-login">
+    <p>Or sign in with:</p>
+    <form action="/users/auth/google">
+      <button class="signup-google-btn">Google</button>
+
+    </form>
+  </div>
+</div>
