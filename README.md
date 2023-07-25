@@ -46,13 +46,27 @@ Reset Password: Once logged in, you can find an option to reset your password. C
 
 Logout: To log out, click on the "Logout" link in the navigation bar.
 
-Dependencies
-This project relies on the following major dependencies:
 
-Express: Web application framework for Node.js
-MongoDB: NoSQL database to store user information
-Mongoose: MongoDB object modeling tool
-Express-Session: Session middleware for Express
-Nodemailer: Module for sending emails with Node.js
-Bcrypt: Password hashing library for Node.js
-These dependencies, along with their versions, can be found in the package.json file.
+## DATABASE
+
+- Description: MongoDB connection string with necessary parameters.
+
+## GOOGLE_CLIENT_ID
+
+- Description: Google client ID for authentication purposes.
+
+
+## GOOGLE_CLIENT_SERVER
+
+- Description: Google client server for authentication purposes.
+
+
+## EMAIL
+
+- Description: Email address associated with the user account.
+
+
+## PASSWORD
+
+- Description: Password for the user account.
+
